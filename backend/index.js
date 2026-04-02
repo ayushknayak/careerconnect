@@ -3,7 +3,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connecttoDB from './utils/db.js';
-import router from '../backend/routes/user.route.js';
+import userRouter from '../backend/routes/user.route.js';
+import companyRouter from '../backend/routes/company.route.js';
 
 dotenv.config({});
 const app=express();
@@ -22,8 +23,8 @@ const corsOption={
 app.use(cors(corsOption));
 const PORT=process.env.PORT||9000;
 
-app.use("/api/user",router)
-
+app.use("/api/user",userRouter)
+app.use("/api/company",companyRouter)
 
 app.listen(PORT,()=>{
     connecttoDB()
